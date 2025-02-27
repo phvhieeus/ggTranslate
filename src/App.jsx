@@ -1,22 +1,17 @@
-import React, { useState } from "react";
 import "./App.css";
+import { useState } from "react";
+import { Header } from "./components/Header";
+import { TranslationTabs } from "./components/TranslationTabs";
+import { LanguageControls } from "./components/LanguageControls";
+import { TranslationPanel } from "./components/TranslationPanel";
+import { ImageTranslation } from "./components/ImageTranslation";
+import { DocumentTranslation } from "./components/DocumentTranslation";
 
 function App() {
   const [text, setText] = useState("");
   const [translatedText, setTranslatedText] = useState("");
-  const [detectLanguage, setDetectLanguage] = useState("Phát hiện ngôn ngữ");
-  const [sourceLanguages, setSourceLanguages] = useState([
-    "Anh",
-    "Việt",
-    "Pháp",
-  ]);
-  const [targetLanguages, setTargetLanguages] = useState([
-    "Việt",
-    "Anh",
-    "Trung (Giản thể)",
-  ]);
-  const [selectedSourceLang, setSelectedSourceLang] = useState("Anh");
-  const [selectedTargetLang, setSelectedTargetLang] = useState("Việt");
+  const [selectedSourceLang, setSelectedSourceLang] = useState("Tiếng Anh");
+  const [selectedTargetLang, setSelectedTargetLang] = useState("Tiếng Việt");
   const [activeTab, setActiveTab] = useState("text");
   const [charCount, setCharCount] = useState(0);
 
@@ -27,7 +22,7 @@ function App() {
   };
 
   const handleTranslate = () => {
-    setTranslatedText(`Translated: ${text}`);
+    setTranslatedText(`Đã dịch: ${text}`);
   };
 
   const clearText = () => {
@@ -36,142 +31,83 @@ function App() {
   };
 
   const swapLanguages = () => {
+    // Không đổi nếu nguồn là "Phát hiện ngôn ngữ"
+    if (selectedSourceLang === "Phát hiện ngôn ngữ") {
+      return;
+    }
+
     const temp = selectedSourceLang;
     setSelectedSourceLang(selectedTargetLang);
     setSelectedTargetLang(temp);
+
+    // Nếu có text và translated text, hoán đổi chúng
+    if (text && translatedText) {
+      setText(translatedText.replace("Đã dịch: ", ""));
+      setTranslatedText(`Đã dịch: ${text}`);
+      setCharCount(translatedText.replace("Đã dịch: ", "").length);
+    }
+  };
+
+  const renderTabContent = () => {
+    switch (activeTab) {
+      case "text":
+        return (
+          <TranslationPanel
+            text={text}
+            translatedText={translatedText}
+            handleTextChange={handleTextChange}
+            charCount={charCount}
+            clearText={clearText}
+            handleTranslate={handleTranslate}
+          />
+        );
+      case "image":
+        return <ImageTranslation />;
+      case "document":
+        return <DocumentTranslation />;
+      case "website":
+        return (
+          <div className="coming-soon">
+            <p>Tính năng trang web sẽ sớm ra mắt</p>
+
+            {/* Thêm phần lịch sử và đã lưu cho tab Website cũng */}
+            <div className="translation-history">
+              <div className="history-item">
+                <div className="history-icon">
+                  <span>🕒</span>
+                </div>
+                <div className="history-text">Các bản dịch đã thực hiện</div>
+              </div>
+              <div className="history-item">
+                <div className="history-icon">
+                  <span>⭐</span>
+                </div>
+                <div className="history-text">Đã lưu</div>
+              </div>
+            </div>
+
+            <div className="feedback-text">Gửi ý kiến phản hồi</div>
+          </div>
+        );
+      default:
+        return null;
+    }
   };
 
   return (
     <div className="App">
-      <header className="App-header">
-        <div className="header-left">
-          <button className="menu-button">
-            <i className="menu-icon">☰</i>
-          </button>
-          <div className="logo">
-            <span className="google-logo">Google</span>
-            <span className="translate-text">Dịch</span>
-          </div>
-        </div>
-        <div className="header-right">
-          <button className="settings-button">
-            <i className="settings-icon">⚙️</i>
-          </button>
-          <button className="profile-button">
-            <div className="profile-circle"></div>
-          </button>
-        </div>
-      </header>
-
+      <Header />
       <div className="translation-section">
-        <div className="tabs">
-          <button
-            className={`tab ${activeTab === "text" ? "active" : ""}`}
-            onClick={() => setActiveTab("text")}
-          >
-            <i className="tab-icon">🖹</i> Văn bản
-          </button>
-          <button
-            className={`tab ${activeTab === "image" ? "active" : ""}`}
-            onClick={() => setActiveTab("image")}
-          >
-            <i className="tab-icon">🖼️</i> Hình ảnh
-          </button>
-          <button
-            className={`tab ${activeTab === "document" ? "active" : ""}`}
-            onClick={() => setActiveTab("document")}
-          >
-            <i className="tab-icon">📄</i> Tài liệu
-          </button>
-          <button
-            className={`tab ${activeTab === "web" ? "active" : ""}`}
-            onClick={() => setActiveTab("web")}
-          >
-            <i className="tab-icon">🌐</i> Trang web
-          </button>
-        </div>
-
+        <TranslationTabs activeTab={activeTab} setActiveTab={setActiveTab} />
         <div className="translate-container">
-          <div className="language-container">
-            <div className="source-lang">
-              <div className="language-selector">
-                <span>{detectLanguage}</span>
-                <select
-                  value={selectedSourceLang}
-                  onChange={(e) => setSelectedSourceLang(e.target.value)}
-                >
-                  {sourceLanguages.map((lang) => (
-                    <option key={lang} value={lang}>
-                      {lang}
-                    </option>
-                  ))}
-                </select>
-              </div>
-            </div>
-
-            <button className="swap-button" onClick={swapLanguages}>
-              <i className="swap-icon">⇄</i>
-            </button>
-
-            <div className="target-lang">
-              <div className="language-selector">
-                <select
-                  value={selectedTargetLang}
-                  onChange={(e) => setSelectedTargetLang(e.target.value)}
-                >
-                  {targetLanguages.map((lang) => (
-                    <option key={lang} value={lang}>
-                      {lang}
-                    </option>
-                  ))}
-                </select>
-              </div>
-            </div>
-          </div>
-
-          <div className="text-areas-container">
-            <div className="text-area-wrapper">
-              <textarea
-                value={text}
-                onChange={handleTextChange}
-                placeholder="Nhập văn bản"
-                className="source-text"
-              />
-              <div className="text-controls">
-                <div className="char-count">{charCount} / 5,000</div>
-                <div className="text-buttons">
-                  <button className="mic-button">
-                    <i className="mic-icon">🎤</i>
-                  </button>
-                  <button className="clear-button" onClick={clearText}>
-                    <i className="clear-icon">✕</i>
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            <div className="text-area-wrapper">
-              <div className="target-header">
-                <span>Bản dịch</span>
-              </div>
-              <textarea
-                value={translatedText}
-                readOnly
-                className="target-text"
-              />
-            </div>
-          </div>
-        </div>
-
-        <div className="translation-history">
-          <div className="history-button">
-            <i className="history-icon">🕒</i>
-            <span>Các bản dịch đã thực hiện</span>
-          </div>
-          <div className="saved-button">
-            <i className="saved-icon">⭐</i>
-            <span>Đã lưu</span>
-          </div>
+          <LanguageControls
+            selectedSourceLang={selectedSourceLang}
+            selectedTargetLang={selectedTargetLang}
+            setSelectedSourceLang={setSelectedSourceLang}
+            setSelectedTargetLang={setSelectedTargetLang}
+            swapLanguages={swapLanguages}
+          />
+          {renderTabContent()}
         </div>
       </div>
     </div>
