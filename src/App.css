@@ -1,4 +1,57 @@
 /* Reset và font */
+
+.translate-button {
+  background-color: #1a73e8;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-right: 8px;
+}
+
+.translate-button:hover:not(:disabled) {
+  background-color: #0d61cb;
+}
+
+.translate-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.coming-soon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 300px;
+  font-size: 18px;
+  color: #666;
+  background-color: #f5f5f5;
+  border-radius: 8px;
+}
+
+.error-message {
+  color: #c53030;
+  padding: 10px;
+  background-color: #fff5f5;
+  border: 1px solid #fed7d7;
+  border-radius: 4px;
+  margin: 10px 0;
+}
+
+.api-error-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.api-error-container pre {
+  background-color: #f8fafc;
+  padding: 10px;
+  border-radius: 4px;
+  overflow-x: auto;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -767,3 +820,348 @@ body {
   font-style: italic;
   margin-top: 10px;
 }
+/* Thêm các style mới này vào cuối file App.css hiện tại của bạn */
+
+/* Styling cho trạng thái dịch và lỗi */
+.translating {
+  color: #1a73e8;
+  font-style: italic;
+}
+
+.error-message {
+  color: #c53030;
+  padding: 10px;
+  background-color: #fff5f5;
+  border: 1px solid #fed7d7;
+  border-radius: 4px;
+  margin: 10px 0;
+}
+
+/* Styling cho các nút trong khu vực bản dịch */
+.translation-actions {
+  display: flex;
+  justify-content: flex-end;
+  padding: 8px 15px;
+  gap: 10px;
+}
+
+.translation-actions button {
+  background: none;
+  border: none;
+  color: #1a73e8;
+  cursor: pointer;
+  font-size: 14px;
+  padding: 5px 10px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.translation-actions button:hover {
+  background-color: #e8f0fe;
+}
+
+/* Nút dịch */
+.translate-button {
+  background-color: #1a73e8;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-right: 8px;
+}
+
+.translate-button:hover:not(:disabled) {
+  background-color: #0d61cb;
+}
+
+.translate-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+.auto-translate-toggle {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 10px;
+}
+
+.auto-translate-label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.auto-translate-label input[type="checkbox"] {
+  margin-right: 8px;
+}
+
+.toggle-text {
+  font-size: 14px;
+  color: #5f6368;
+}
+/* Microphone button styling */
+.mic-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 10px;
+  cursor: pointer;
+  background: transparent;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin-right: 6px;
+  transition: all 0.2s ease;
+}
+
+.mic-button:hover {
+  background-color: #f0f0f0;
+}
+
+.mic-active {
+  background-color: #ffeeee;
+  border-color: #ff6666;
+  color: #ff0000;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% { opacity: 1; }
+  50% { opacity: 0.7; }
+  100% { opacity: 1; }
+}
+/* Document Translation Styles */
+.document-translation {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.file-upload-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.file-input {
+  display: none;
+}
+
+.file-upload-label {
+  padding: 10px 15px;
+  background-color: #f0f0f0;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  cursor: pointer;
+  flex-grow: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 300px;
+}
+
+.file-upload-label:hover {
+  background-color: #e0e0e0;
+}
+
+.translate-button {
+  padding: 10px 15px;
+  background-color: #4285f4;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.translate-button:hover {
+  background-color: #3367d6;
+}
+
+.translate-button:disabled {
+  background-color: #a0a0a0;
+  cursor: not-allowed;
+}
+
+.file-info {
+  background-color: #f9f9f9;
+  padding: 10px;
+  border-radius: 4px;
+  border: 1px solid #eee;
+}
+
+.progress-info {
+  padding: 10px;
+  background-color: #e8f0fe;
+  border-radius: 4px;
+  color: #1a73e8;
+}
+
+.error-message {
+  padding: 10px;
+  background-color: #fce8e6;
+  border-radius: 4px;
+  color: #d93025;
+}
+
+.supported-formats {
+  font-size: 0.85rem;
+  color: #666;
+  margin-top: 10px;
+}
+.document-translation {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.language-selection {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  padding: 15px;
+  background-color: #f5f5f5;
+  border-radius: 8px;
+}
+
+.language-selector {
+  display: flex;
+  flex-direction: column;
+  width: 45%;
+}
+
+.language-selector label {
+  margin-bottom: 5px;
+  font-weight: 500;
+  color: #333;
+}
+
+.language-selector select {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: white;
+  font-size: 16px;
+  width: 100%;
+}
+
+.language-swap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.swap-button {
+  background-color: #f0f0f0;
+  border: 1px solid #ddd;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  font-size: 18px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.swap-button:hover:not(:disabled) {
+  background-color: #e0e0e0;
+}
+
+.swap-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.file-upload-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.file-input {
+  display: none;
+}
+
+.file-upload-label {
+  padding: 12px 15px;
+  background-color: #f0f0f0;
+  border: 1px dashed #ccc;
+  border-radius: 4px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.file-upload-label:hover {
+  background-color: #e0e0e0;
+}
+
+.translate-button {
+  padding: 12px 15px;
+  background-color: #4285f4;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.translate-button:hover:not(:disabled) {
+  background-color: #3367d6;
+}
+
+.translate-button:disabled {
+  background-color: #a9c3f5;
+  cursor: not-allowed;
+}
+
+.file-info {
+  margin-bottom: 15px;
+  padding: 10px;
+  background-color: #f9f9f9;
+  border-radius: 4px;
+}
+
+.progress-info {
+  margin: 15px 0;
+  padding: 10px;
+  background-color: #e8f0fe;
+  border-left: 4px solid #4285f4;
+  border-radius: 4px;
+}
+
+.error-message {
+  margin: 15px 0;
+  padding: 10px;
+  background-color: #fde7e9;
+  border-left: 4px solid #d93025;
+  border-radius: 4px;
+  color: #d93025;
+}
+
+.supported-formats {
+  margin-top: 20px;
+  padding: 15px;
+  background-color: #f5f5f5;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+.fallback-notice {
+  margin-top: 10px;
+  padding: 10px;
+  background-color: #fff8e1;
+  border-left: 4px solid #ffc107;
+  border-radius: 4px;
+}
+
