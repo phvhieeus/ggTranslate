@@ -1,57 +1,74 @@
 import React from "react";
 
-export const TranslationPanel = ({
+export function TranslationPanel({
   text,
   translatedText,
   handleTextChange,
   charCount,
   clearText,
   handleTranslate,
-}) => {
+  isTranslating,
+  error,
+  autoTranslate
+}) {
   return (
-    <>
-      <div className="text-areas-container">
-        <div className="text-area-wrapper">
-          <textarea
-            className="source-text"
-            placeholder="Nhập văn bản"
-            value={text}
-            onChange={handleTextChange}
-            onKeyUp={handleTranslate}
-          ></textarea>
-          <div className="text-controls">
-            <div className="char-count">{charCount}/5,000</div>
-            <div className="text-buttons">
-              <button className="mic-button">🎤</button>
-              <button className="clear-button" onClick={clearText}>
-                ✕
+    <div className="text-areas-container">
+      {/* Source text area */}
+      <div className="text-area-wrapper">
+        <textarea
+          className="source-text"
+          placeholder="Nhập văn bản cần dịch"
+          value={text}
+          onChange={handleTextChange}
+        ></textarea>
+        <div className="text-controls">
+          <span className="char-count">{charCount}/5000</span>
+          <div className="text-buttons">
+            {!autoTranslate && (
+              <button 
+                className="translate-button" 
+                onClick={handleTranslate} 
+                disabled={!text.trim() || isTranslating}
+              >
+                {isTranslating ? "Đang dịch..." : "Dịch"}
               </button>
-            </div>
+            )}
+            <button 
+              className="clear-button" 
+              onClick={clearText}
+            >
+              ✕
+            </button>
           </div>
-        </div>
-        <div className="text-area-wrapper">
-          <div className="target-header">Bản dịch</div>
-          <div className="target-text">{translatedText}</div>
         </div>
       </div>
-
-      {/* Thêm phần lịch sử và đã lưu */}
-      <div className="translation-history">
-        <div className="history-item">
-          <div className="history-icon">
-            <span>🕒</span>
-          </div>
-          <div className="history-text">Các bản dịch đã thực hiện</div>
+      
+      {/* Target text area */}
+      <div className="text-area-wrapper">
+        <div className="target-header">
+          Bản dịch {isTranslating && <span className="translating">(đang dịch...)</span>}
         </div>
-        <div className="history-item">
-          <div className="history-icon">
-            <span>⭐</span>
+        <textarea
+          className="target-text"
+          value={translatedText}
+          readOnly
+        ></textarea>
+        <div className="text-controls">
+          <div className="text-buttons">
+            {translatedText && (
+              <button 
+                className="mic-button" 
+                onClick={() => navigator.clipboard.writeText(translatedText)}
+                title="Sao chép bản dịch"
+              >
+                📋
+              </button>
+            )}
           </div>
-          <div className="history-text">Đã lưu</div>
         </div>
       </div>
-
-      <div className="feedback-text">Gửi ý kiến phản hồi</div>
-    </>
+      
+      {error && <div className="error-message">{error}</div>}
+    </div>
   );
-};
+}

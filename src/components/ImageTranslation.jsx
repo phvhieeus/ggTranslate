@@ -58,7 +58,7 @@ export const ImageTranslation = () => {
       }
     } catch (err) {
       console.error("Failed to read clipboard:", err);
-      alert("Vui lòng sử dụng Ctrl+V để dán ảnh từ clipboard");
+      alert("Please use Ctrl+V to paste image from clipboard");
     }
   };
 
@@ -76,23 +76,23 @@ export const ImageTranslation = () => {
                 <path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM14 13v4h-4v-4H7l5-5 5 5h-3z" />
               </svg>
             </div>
-            <div className="upload-text">Kéo và thả</div>
+            <div className="upload-text">Drag and Drop</div>
             <div className="upload-options">
-              <div className="upload-title">Hoặc chọn một tệp</div>
+              <div className="upload-title">Or select a file</div>
               <button className="upload-btn" onClick={handleBrowseClick}>
-                Duyệt qua các tệp
+                Browse files
               </button>
               <button
                 className="clipboard-btn"
                 onClick={handlePasteFromClipboard}
               >
                 <span className="clipboard-icon">📋</span>
-                Dán tệp từ bảng nhớ tạm
+                Paste file from clipboard
               </button>
               <div className="supported-formats">
-                Các loại tệp được hỗ trợ: .jpg, .jpeg, .png
+                  Supported file types: .jpg, .jpeg, .png
                 <a href="#" className="learn-more-link">
-                  Tìm hiểu thêm
+                  Learn more
                 </a>
               </div>
             </div>
@@ -109,7 +109,7 @@ export const ImageTranslation = () => {
             <div className="preview-toolbar">
               <button className="preview-action-btn" onClick={handleClearImage}>
                 <span className="preview-action-icon">🗑️</span>
-                Xóa
+                Delete
               </button>
             </div>
             <img src={previewUrl} alt="Preview" className="image-preview" />
@@ -123,17 +123,17 @@ export const ImageTranslation = () => {
           <div className="history-icon">
             <span>🕒</span>
           </div>
-          <div className="history-text">Các bản dịch đã thực hiện</div>
+          <div className="history-text">Translations done</div>
         </div>
         <div className="history-item">
           <div className="history-icon">
             <span>⭐</span>
           </div>
-          <div className="history-text">Đã lưu</div>
+          <div className="history-text">Saved</div>
         </div>
       </div>
 
-      <div className="feedback-text">Gửi ý kiến phản hồi</div>
+      <div className="feedback-text">Send feedback</div>
     </>
   );
 };

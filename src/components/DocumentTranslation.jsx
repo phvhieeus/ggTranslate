@@ -76,14 +76,14 @@ export const DocumentTranslation = () => {
           onDrop={handleDrop}
         >
           <div className="document-upload-options">
-            <div className="document-title">Hoặc chọn một tệp</div>
+            <div className="document-title">Or select a file</div>
             <button className="browse-files-btn" onClick={handleBrowseClick}>
-              Duyệt qua các tệp
+              Browse files
             </button>
             <div className="supported-document-formats">
-              Các loại tệp được hỗ trợ: .docx, .pdf, .pptx, .xlsx
+                Supported file types: .docx, .pdf, .pptx, .xlsx
               <a href="#" className="document-learn-more">
-                Tìm hiểu thêm
+                Learn more
               </a>
             </div>
           </div>
@@ -100,7 +100,7 @@ export const DocumentTranslation = () => {
           <div className="document-preview-toolbar">
             <button className="document-action-btn" onClick={handleClearFile}>
               <span className="document-action-icon">🗑️</span>
-              Xóa
+              delete
             </button>
           </div>
           <div className="document-preview">
@@ -111,7 +111,7 @@ export const DocumentTranslation = () => {
                 </span>
                 {selectedFile.name} ({formatFileSize(selectedFile.size)})
               </h3>
-              <p style={{ marginTop: "20px" }}>Đang xử lý tài liệu...</p>
+              <p style={{ marginTop: "20px" }}>Processing document...</p>
             </div>
           </div>
         </div>
@@ -123,17 +123,17 @@ export const DocumentTranslation = () => {
           <div className="history-icon">
             <span>🕒</span>
           </div>
-          <div className="history-text">Các bản dịch đã thực hiện</div>
+          <div className="history-text">Translations done</div>
         </div>
         <div className="history-item">
           <div className="history-icon">
             <span>⭐</span>
           </div>
-          <div className="history-text">Đã lưu</div>
+          <div className="history-text">Saved</div>
         </div>
       </div>
 
-      <div className="document-feedback-text">Gửi ý kiến phản hồi</div>
+      <div className="document-feedback-text">Send feedback</div>
     </>
   );
 };

@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 export const TranslationTabs = ({ activeTab, setActiveTab }) => {
   return (
@@ -7,7 +7,7 @@ export const TranslationTabs = ({ activeTab, setActiveTab }) => {
         className={`tab ${activeTab === "text" ? "active" : ""}`}
         onClick={() => setActiveTab("text")}
       >
-        <span className="tab-icon">🔤</span>
+        <span className="tab-icon">📝</span>
         Văn bản
       </button>
       <button
