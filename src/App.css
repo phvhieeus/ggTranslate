@@ -1,4 +1,57 @@
 /* Reset và font */
+
+.translate-button {
+  background-color: #1a73e8;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-right: 8px;
+}
+
+.translate-button:hover:not(:disabled) {
+  background-color: #0d61cb;
+}
+
+.translate-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.coming-soon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 300px;
+  font-size: 18px;
+  color: #666;
+  background-color: #f5f5f5;
+  border-radius: 8px;
+}
+
+.error-message {
+  color: #c53030;
+  padding: 10px;
+  background-color: #fff5f5;
+  border: 1px solid #fed7d7;
+  border-radius: 4px;
+  margin: 10px 0;
+}
+
+.api-error-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.api-error-container pre {
+  background-color: #f8fafc;
+  padding: 10px;
+  border-radius: 4px;
+  overflow-x: auto;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -28,6 +81,11 @@ body {
   padding: 10px 15px;
   border-bottom: 1px solid #eee;
   background-color: white;
+}
+
+
+.hidden {
+  display: none;
 }
 
 .header-left,
@@ -766,4 +824,86 @@ body {
   font-size: 12px;
   font-style: italic;
   margin-top: 10px;
+}
+/* Thêm các style mới này vào cuối file App.css hiện tại của bạn */
+
+/* Styling cho trạng thái dịch và lỗi */
+.translating {
+  color: #1a73e8;
+  font-style: italic;
+}
+
+.error-message {
+  color: #c53030;
+  padding: 10px;
+  background-color: #fff5f5;
+  border: 1px solid #fed7d7;
+  border-radius: 4px;
+  margin: 10px 0;
+}
+
+/* Styling cho các nút trong khu vực bản dịch */
+.translation-actions {
+  display: flex;
+  justify-content: flex-end;
+  padding: 8px 15px;
+  gap: 10px;
+}
+
+.translation-actions button {
+  background: none;
+  border: none;
+  color: #1a73e8;
+  cursor: pointer;
+  font-size: 14px;
+  padding: 5px 10px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.translation-actions button:hover {
+  background-color: #e8f0fe;
+}
+
+/* Nút dịch */
+.translate-button {
+  background-color: #1a73e8;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-right: 8px;
+}
+
+.translate-button:hover:not(:disabled) {
+  background-color: #0d61cb;
+}
+
+.translate-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+.auto-translate-toggle {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 10px;
+}
+
+.auto-translate-label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.auto-translate-label input[type="checkbox"] {
+  margin-right: 8px;
+}
+
+.toggle-text {
+  font-size: 14px;
+  color: #5f6368;
 }

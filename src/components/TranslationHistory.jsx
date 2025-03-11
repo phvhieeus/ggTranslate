@@ -14,7 +14,7 @@ export const TranslationPanel = ({
         <div className="text-area-wrapper">
           <textarea
             className="source-text"
-            placeholder="Nhập văn bản"
+            placeholder="Enter text"
             value={text}
             onChange={handleTextChange}
             onKeyUp={handleTranslate}
@@ -30,7 +30,7 @@ export const TranslationPanel = ({
           </div>
         </div>
         <div className="text-area-wrapper">
-          <div className="target-header">Bản dịch</div>
+          <div className="target-header">Translation</div>
           <div className="target-text">{translatedText}</div>
         </div>
       </div>
@@ -41,17 +41,17 @@ export const TranslationPanel = ({
           <div className="history-icon">
             <span>🕒</span>
           </div>
-          <div className="history-text">Các bản dịch đã thực hiện</div>
+          <div className="history-text">Translations done</div>
         </div>
         <div className="history-item">
           <div className="history-icon">
             <span>⭐</span>
           </div>
-          <div className="history-text">Đã lưu</div>
+          <div className="history-text">Saved</div>
         </div>
       </div>
 
-      <div className="feedback-text">Gửi ý kiến phản hồi</div>
+      <div className="feedback-text">Send feedback</div>
     </>
   );
 };
